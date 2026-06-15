@@ -1,0 +1,20 @@
+[package]
+name = "btree_godot"
+version = "0.1.0"
+edition = "2024"
+description = "Godot (gdext) behavior-tree nodes for the `btree` library — a Rust port of the engine-coupled LimboAI tasks."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/azu0nyan/bTreeRsGodot"
+readme = "README.md"
+keywords = ["behavior-tree", "godot", "gdext", "game-ai", "ai"]
+categories = ["game-development"]
+
+# Standalone workspace root so this crate builds independently even when it is
+# checked out as a git submodule inside another Cargo workspace.
+[workspace]
+
+[dependencies]
+btree = { path = "../bTreeRs" }
+
+[dependencies.godot]
+version = "0.5.2"
