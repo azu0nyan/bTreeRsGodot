@@ -1,7 +1,7 @@
 //! The [`CallMethod`] action.
 
 use crate::caps::HasAgent;
-use btree::{record, BehaviorNode, DebugNode, Status};
+use btree::{BehaviorNode, DebugNode, Status, record};
 use godot::builtin::{StringName, Variant};
 
 /// Calls a method on the context's agent `Node`. Mirrors `BTCallMethod`.
@@ -26,10 +26,7 @@ impl CallMethod {
 
     /// Call `method` with the given arguments.
     pub fn with_args(method: impl Into<StringName>, args: Vec<Variant>) -> Self {
-        Self {
-            method: method.into(),
-            args,
-        }
+        Self { method: method.into(), args }
     }
 }
 

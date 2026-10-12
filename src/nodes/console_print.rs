@@ -1,6 +1,6 @@
 //! The [`ConsolePrint`] action.
 
-use btree::{record, BehaviorNode, DebugNode, Status};
+use btree::{BehaviorNode, DebugNode, Status, record};
 use godot::global::godot_print;
 
 /// Prints a message to the Godot output and succeeds. Mirrors `BTConsolePrint`.
@@ -13,9 +13,7 @@ pub struct ConsolePrint {
 impl ConsolePrint {
     /// Print `message` each time the node is ticked.
     pub fn new(message: impl Into<String>) -> Self {
-        Self {
-            message: message.into(),
-        }
+        Self { message: message.into() }
     }
 }
 

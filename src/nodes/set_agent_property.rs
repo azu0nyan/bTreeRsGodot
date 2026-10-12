@@ -1,7 +1,7 @@
 //! The [`SetAgentProperty`] action.
 
 use crate::caps::HasAgent;
-use btree::{record, BehaviorNode, DebugNode, Status};
+use btree::{BehaviorNode, DebugNode, Status, record};
 use godot::builtin::{StringName, Variant};
 use godot::meta::ToGodot;
 

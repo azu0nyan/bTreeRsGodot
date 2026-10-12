@@ -1,7 +1,7 @@
 //! The [`PlayAnimation`] action.
 
 use crate::caps::HasAnimationPlayer;
-use btree::{record, BehaviorNode, DebugNode, Status};
+use btree::{BehaviorNode, DebugNode, Status, record};
 use godot::builtin::StringName;
 
 /// Plays a named animation on the context's `AnimationPlayer`, reporting

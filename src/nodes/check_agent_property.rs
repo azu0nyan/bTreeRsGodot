@@ -1,7 +1,7 @@
 //! The [`CheckAgentProperty`] condition.
 
 use crate::caps::HasAgent;
-use btree::{record, BehaviorNode, DebugNode, Status};
+use btree::{BehaviorNode, DebugNode, Status, record};
 use godot::builtin::{StringName, Variant};
 use godot::meta::ToGodot;
 
@@ -26,11 +26,7 @@ impl<D: HasAgent> BehaviorNode<D> for CheckAgentProperty {
     fn tick(&mut self, data: &mut D, dbg: Option<&mut DebugNode>) -> Status {
         let agent = data.agent();
         let actual = agent.get(&self.property);
-        let status = if actual == self.expected {
-            Status::Success
-        } else {
-            Status::Failure
-        };
+        let status = if actual == self.expected { Status::Success } else { Status::Failure };
         let name = self.property.clone();
         record(dbg, status, || format!("CheckAgentProperty: {name}"));
         status

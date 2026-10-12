@@ -1,7 +1,7 @@
 //! The [`EvaluateExpression`] action.
 
 use crate::caps::HasAgent;
-use btree::{record, BehaviorNode, DebugNode, Status};
+use btree::{BehaviorNode, DebugNode, Status, record};
 use godot::classes::Expression;
 use godot::global::Error;
 use godot::obj::NewGd;
@@ -20,9 +20,7 @@ pub struct EvaluateExpression {
 impl EvaluateExpression {
     /// Evaluate the GDScript `expression` string.
     pub fn new(expression: impl Into<String>) -> Self {
-        Self {
-            expression: expression.into(),
-        }
+        Self { expression: expression.into() }
     }
 }
 
@@ -30,9 +28,7 @@ impl<D: HasAgent> BehaviorNode<D> for EvaluateExpression {
     fn tick(&mut self, data: &mut D, dbg: Option<&mut DebugNode>) -> Status {
         let mut expr = Expression::new_gd();
         if expr.parse(self.expression.as_str()) != Error::OK {
-            record(dbg, Status::Failure, || {
-                "EvaluateExpression (parse error)".to_string()
-            });
+            record(dbg, Status::Failure, || "EvaluateExpression (parse error)".to_string());
             return Status::Failure;
         }
         let base = data.agent();

@@ -1,7 +1,7 @@
 //! The [`PauseAnimation`] action.
 
 use crate::caps::HasAnimationPlayer;
-use btree::{record, BehaviorNode, DebugNode, Status};
+use btree::{BehaviorNode, DebugNode, Status, record};
 
 /// Pauses the context's `AnimationPlayer` and succeeds. Mirrors
 /// `BTPauseAnimation`.

@@ -66,10 +66,7 @@ pub mod caps;
 pub mod nodes;
 
 pub use caps::{HasAgent, HasAnimationPlayer};
-pub use nodes::{
-    AwaitAnimation, CallMethod, CheckAgentProperty, ConsolePrint, EvaluateExpression,
-    PauseAnimation, PlayAnimation, SetAgentProperty, StopAnimation,
-};
+pub use nodes::{AwaitAnimation, CallMethod, CheckAgentProperty, ConsolePrint, EvaluateExpression, PauseAnimation, PlayAnimation, SetAgentProperty, StopAnimation};
 
 /// Re-exports of everything you typically need to build a Godot behavior tree:
 /// this crate's nodes and capability traits, plus all of [`btree`]'s prelude

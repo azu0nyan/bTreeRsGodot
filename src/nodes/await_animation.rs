@@ -1,7 +1,7 @@
 //! The [`AwaitAnimation`] action.
 
 use crate::caps::HasAnimationPlayer;
-use btree::{record, BehaviorNode, DebugNode, Status};
+use btree::{BehaviorNode, DebugNode, Status, record};
 
 /// Waits for the context's `AnimationPlayer` to finish whatever it is playing,
 /// then succeeds. Mirrors `BTAwaitAnimation`.
@@ -22,11 +22,7 @@ impl AwaitAnimation {
 impl<D: HasAnimationPlayer> BehaviorNode<D> for AwaitAnimation {
     fn tick(&mut self, data: &mut D, dbg: Option<&mut DebugNode>) -> Status {
         let player = data.animation_player();
-        let status = if player.is_playing() {
-            Status::Running
-        } else {
-            Status::Success
-        };
+        let status = if player.is_playing() { Status::Running } else { Status::Success };
         record(dbg, status, || "AwaitAnimation".to_string());
         status
     }
